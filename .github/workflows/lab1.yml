@@ -22,6 +22,5 @@ jobs:
                   sudo apt-get install -y nodejs
             - name: grading
               run: |
-                  echo "cd lab1"
                   cd lab1
                   ./validate.sh
