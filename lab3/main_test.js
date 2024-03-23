@@ -4,7 +4,7 @@ const { Calculator } = require('./main');
 
 // TODO: write your tests here
 
-/**
+/*
  * 測試 Calculator 的 exp 函數
  */
 describe('Test function of Calculator exp(x) ',()=>{
@@ -38,7 +38,7 @@ describe('Test function of Calculator exp(x) ',()=>{
 
 })
 
-/**
+/*
  * 測試 Calculator 的 log 函數
  */
 describe('Test function of Calculator log(x) ',()=>{
@@ -64,7 +64,7 @@ describe('Test function of Calculator log(x) ',()=>{
     })
 
     // test case 3
-    it('is not a number ',()=> {
+    it('Math.log is not a number ',()=> {
         try{
             let result = calculator.log(-10)
         }catch(error){
