@@ -11,6 +11,14 @@ describe('Test function of Calculator exp(x) ',()=>{
     // initialize Calculator class there
     let calculator = new Calculator()
 
+    // test case example here
+    it.skip('Example test (skipped)',()=>{
+        // write down test case 
+
+        // expect result with assert
+        assert.equal(true,true)
+    })
+
     // test case 1
     it('Parameter is not a number',()=> {
         try{
