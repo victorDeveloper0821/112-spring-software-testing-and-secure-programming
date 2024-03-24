@@ -2,87 +2,58 @@ const { describe, it } = require('node:test');
 const assert = require('assert');
 const { Calculator } = require('./main');
 
-// TODO: write your tests here
-
 /*
  * 測試 Calculator 的 exp 函數
  */
 describe('Test function of Calculator exp(x) ',()=>{
-    // initialize Calculator class there
-    let calculator = new Calculator()
+    let calculator = new Calculator();
 
-    // test case example here
-    it.skip('Example test (skipped)',()=>{
-        // write down test case 
-
-        // expect result with assert
-        assert.equal(true,true)
+    it.skip('測試案例長這樣子',()=>{
+        assert.equal(5,5);
     })
+    const testCases = [
+        { arg: 'string dummy', expectedError: 'unsupported operand type' },
+        { arg: 1000000000, expectedError: 'overflow' },
+        { arg: 87, expected: 'number' },
+    ];
 
-    // test case 1
-    it('Parameter is not a number',()=> {
-        try{
-            let result = calculator.exp('string dummy')
-        }catch(error){
-            assert.equal('unsupported operand type',error.message)
-        }
-    })
-
-    // test case 2
-    it('number is overflow',()=> {
-        try{
-            let result = calculator.exp(1000000000)
-        }catch(error){
-            assert.equal('overflow',error.message)
-        }
-    })
-
-    // test case 3
-    it('return a number',()=> {
-        let result = calculator.exp(87)
-        console.log('result is '+result)
-        assert.equal(false, Number.isNaN(result))
-    })
-
-})
+    testCases.forEach(({ arg, expected, expectedError }) => {
+        const testType = expectedError ? 'error' : 'success';
+        it(`exp(${arg}) should ${testType} - expect ${expected || expectedError}`, ()=> {
+            if (expectedError) {
+                assert.throws(() => calculator.exp(arg), new Error(expectedError));
+            } else {
+                const result = calculator.exp(arg);
+                console.log('result is ' + result);
+                assert.strictEqual(typeof result, expected);
+            }
+        });
+    });
+});
 
 /*
  * 測試 Calculator 的 log 函數
  */
 describe('Test function of Calculator log(x) ',()=>{
-    // initialize Calculator class there
-    let calculator = new Calculator()
+    let calculator = new Calculator();
 
-    // test case 1
-    it('Parameter is not a number',()=> {
-        let dummy = 'dummy'
-        assert.throws(function(){calculator.log(dummy)},Error)
-        assert.throws(function(){calculator.log(dummy)},{message:'unsupported operand type'})
-    })
+    const testCases = [
+        { arg: 'dummy', expectedError: 'unsupported operand type' },
+        { arg: 0, expectedError: 'math domain error (1)' },
+        { arg: -10, expectedError: 'math domain error (2)' },
+        { arg: 87, expected: 'number' },
+    ];
 
-    // test case 2
-    it('number is infinity',()=> {
-        try{
-            let result = calculator.log(0)
-        }catch(error){
-            assert.equal('math domain error (1)',error.message)
-        }
-    })
-
-    // test case 3
-    it('Math.log is not a number ',()=> {
-        try{
-            let result = calculator.log(-10)
-        }catch(error){
-            assert.equal('math domain error (2)',error.message)
-        }
-    })
-
-    // test case 4
-    it('return a number',()=> {
-        let result = calculator.log(87)
-        console.log('result is '+result)
-        assert.equal(false, Number.isNaN(result))
-    })
-
-})
+    testCases.forEach(({ arg, expected, expectedError }) => {
+        const testType = expectedError ? 'error' : 'success';
+        it(`log(${arg}) should ${testType} - expect ${expected || expectedError}`, ()=> {
+            if (expectedError) {
+                assert.throws(() => calculator.log(arg), new Error(expectedError));
+            } else {
+                const result = calculator.log(arg);
+                console.log('result is ' + result);
+                assert.strictEqual(typeof result, expected);
+            }
+        });
+    });
+});
