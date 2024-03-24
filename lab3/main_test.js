@@ -47,17 +47,15 @@ describe('Test function of Calculator log(x) ',()=>{
 
     // test case 1
     it('Parameter is not a number',()=> {
-        try{
-            let result = calculator.log('string dummy')
-        }catch(error){
-            assert.equal('unsupported operand type',error.message)
-        }
+        let dummy = 'dummy'
+        assert.throws(function(){calculator.log(dummy)},Error)
+        assert.throws(function(){calculator.log(dummy)},{message:'unsupported operand type'})
     })
 
     // test case 2
     it('number is infinity',()=> {
         try{
-        let result = calculator.log(0)
+            let result = calculator.log(0)
         }catch(error){
             assert.equal('math domain error (1)',error.message)
         }
