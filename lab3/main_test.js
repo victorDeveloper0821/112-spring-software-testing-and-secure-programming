@@ -14,7 +14,9 @@ describe('Test function of Calculator exp(x) ',()=>{
     const testCases = [
         { arg: 'string dummy', expectedError: 'unsupported operand type' },
         { arg: 1000000000, expectedError: 'overflow' },
-        { arg: 87, expected: 'number' },
+        { arg: 30, expected: 'number' },
+        { arg: 40, expected: 'number' },
+        { arg: 50, expected: 'number' }
     ];
 
     testCases.forEach(({ arg, expected, expectedError }) => {
@@ -42,6 +44,8 @@ describe('Test function of Calculator log(x) ',()=>{
         { arg: 0, expectedError: 'math domain error (1)' },
         { arg: -10, expectedError: 'math domain error (2)' },
         { arg: 87, expected: 'number' },
+        { arg: 800, expected: 'number' },
+        { arg: 9487, expected: 'number' }
     ];
 
     testCases.forEach(({ arg, expected, expectedError }) => {
