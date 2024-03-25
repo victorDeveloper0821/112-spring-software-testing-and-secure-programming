@@ -13,7 +13,7 @@ class Calculator {
         if (result === Infinity) {
             throw Error('overflow');
         }
-        // 回傳 Math.exp 於 result 中的運算結果
+        // 回傳 result 變數的運算結果
         return result;
     }
 
@@ -35,7 +35,7 @@ class Calculator {
         if (Number.isNaN(result)) {
             throw Error('math domain error (2)');
         }
-        // 回傳 Math.log 於 result 中的運算結果
+        // 回傳 result 變數的運算結果
         return result;
     }
 }
